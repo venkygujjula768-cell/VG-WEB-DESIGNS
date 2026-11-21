@@ -64,9 +64,9 @@ footer{padding:25px 8%;display:flex;justify-content:space-between;gap:20px;color
 </header>
 <main>
   <section class="hero" id="home">
-    <video autoplay muted loop playsinline preload="metadata" poster="">
-      <source src="background.mp4" type="video/mp4">
-    </video>
+    <video id="bgVideo" autoplay muted loop playsinline webkit-playsinline preload="auto">
+  <source src="background.mp4" type="video/mp4">
+</video>
     <div class="hero-content">
       <div class="eyebrow">Independent Creative Web Studio</div>
       <h1>VG WEB<br><span>DESIGNS.</span></h1>
@@ -115,6 +115,16 @@ if('IntersectionObserver' in window){
  }),{threshold:.12});
  items.forEach(item=>observer.observe(item));
 }else{items.forEach(item=>item.classList.add('visible'))}
+</script><script>
+const video = document.getElementById("bgVideo");
+
+video.muted = true;
+video.playsInline = true;
+
+window.addEventListener("load", () => {
+  video.play().catch(() => {
+    console.log("Video autoplay blocked by browser");
+  });
+});
 </script>
 </body>
-</html>
